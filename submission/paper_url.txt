@@ -1,1 +1,1 @@
-PASTE-YOUR-DEPLOYED-PAPER-URL-HERE
+https://jamesivamatienzo.github.io/flyrank-ml-internship-starter/

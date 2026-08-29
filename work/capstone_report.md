@@ -328,3 +328,16 @@ Full environment: see `requirements.txt` in the repo root.
 > language everywhere · no causal claims without an experiment or causal design · no
 > "predicted Google's algorithm" · no client-identifying details · numbers in this report
 > match a fresh re-run.
+
+---
+
+## Acknowledgments & Data Credit
+
+This project was completed as part of the **FlyRank ML Internship** program.
+
+**Dataset:** Built on the FlyRank ML Internship dataset — a pseudonymized warehouse of real production search and analytics data provided by [FlyRank](https://flyrank.ai). The warehouse (`FlyRank/internship-warehouse`, build v20260703) contains ~81.8M rows of Google Search Console and GA4 daily performance data across 104 clients. All client identifiers are salted hashes; no client names, URLs, or raw search queries appear in any output. Crediting your data source is standard research practice.
+
+**Tools:** Python · DuckDB · scikit-learn · pandas · NumPy · Hugging Face Hub
+
+**Repo:** [github.com/JamesIvanMatienzo/flyrank-ml-internship-starter](https://github.com/JamesIvanMatienzo/flyrank-ml-internship-starter)
+
