@@ -1,14 +1,23 @@
-# Capstone Report — CTR / Engagement Opportunity Scoring
+# Which Pages Should a Content Team Rewrite First? A Machine-Learning Approach to CTR Opportunity Scoring
 
 - **Author:** James Ivan Matienzo
 - **Lane:** Lane 4 — CTR / Engagement Opportunity Scoring
 - **Repo:** https://github.com/JamesIvanMatienzo/flyrank-ml-internship-starter
 - **Date:** August 2026
 
-> Copy this file to `work/capstone_report.md` and fill it in as you build. The eight
-> sections mirror the Pass / Needs-Work rubric axes, so nothing here is optional.
+## Abstract
+
+Content teams managing large website portfolios face a triage problem: thousands of pages are visible on Google, but only a fraction have titles and meta descriptions compelling enough to earn a click. This project asks whether a machine-learning model can identify, from observable traffic and engagement signals alone, which pages are underperforming their expected click-through rate (CTR) for their search position — and rank them into a priority rewrite queue for editors. Using the FlyRank internship warehouse (52,766 pages, 44 clients, June 2026 Google Search Console data), we define a position-adjusted opportunity label, train a Random Forest classifier on 5 honest features, and validate on a grouped client holdout to test generalization to new clients. The model achieves ROC AUC = 0.796 and Precision@20 = 60% (3× lift over base rate) on unseen clients, without access to the CTR signal that defines the label. The result is an actionable ranked queue of 7,809 high-confidence pages with editor-ready action labels — a decision-support tool for FlyRank's content rewrite pipeline.
 
 ## 1. Problem framing
+
+### The FlyRank Content Problem
+
+FlyRank produces and manages content for dozens of client websites. A recurring operational problem: many pages that rank on Google's first or second page receive far fewer clicks than comparable pages at the same position. The title tag and meta description — the two lines a searcher sees before clicking — are failing to convert visibility into traffic.
+
+Editors who could fix these pages face a scale problem. A portfolio of 50,000 pages cannot be reviewed manually. Without a systematic ranking, teams either work from gut feel, fix the most recently flagged pages, or do bulk rewrites with no priority order. All three approaches waste effort on low-impact pages while high-impression underperformers sit untouched for months.
+
+This project builds the triage layer that was missing: a model that scores every page's CTR underperformance relative to its position tier, and outputs a ranked queue — **highest-impact opportunity first** — so an editor opening the list Monday morning knows exactly which page to open first.
 
 **Decision supported:** This work supports a content editor's decision of **which pages to rewrite first** to recover lost search clicks. Given a portfolio of thousands of pages across dozens of client websites, editors cannot manually review every page — they need a ranked queue that surfaces the highest-impact opportunities at the top.
 
